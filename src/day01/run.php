@@ -1,6 +1,6 @@
 <?php
 const TARGET_VALUE = 2020;
-const INPUT_FILE = __DIR__.'/input.txt';
+const INPUT_FILE = __DIR__ . '/input.txt';
 
 $strNumbers = file(INPUT_FILE,FILE_IGNORE_NEW_LINES);
 $numbers = [];

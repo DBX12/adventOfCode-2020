@@ -1,0 +1,20 @@
+{
+  "name": "dbx12/advent-of-code",
+  "description": "My solutions for advent of code",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "dbx12",
+      "email": "dbx12@dbx12.de"
+    }
+  ],
+  "require": {
+    "php": "~7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "dbx12\\adventOfCode\\": "src/"
+    }
+  }
+}
