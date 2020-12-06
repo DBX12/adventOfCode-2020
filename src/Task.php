@@ -2,6 +2,8 @@
 
 namespace dbx12\adventOfCode;
 
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use RuntimeException;
 
 abstract class Task
@@ -54,5 +56,22 @@ abstract class Task
     public function solveSubtaskB(bool $asTest = false): void
     {
         echo "No solution prepared\n";
+    }
+
+    /**
+     * Takes a multidimensional array and flattens it into a one-dimensional array.
+     * Adapted from this StackOverflow solution: https://stackoverflow.com/a/1320259/6367716
+     * According to comments on this solution, using it with objects will lead to loosing these objects.
+     *
+     * @param array $multidimensionalInput
+     * @return array
+     */
+    protected function flattenArray(array $multidimensionalInput): array{
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($multidimensionalInput));
+        $result = [];
+        foreach($iterator as $v){
+            $result[] = $v;
+        }
+        return $result;
     }
 }
