@@ -4,7 +4,9 @@
 namespace dbx12\adventOfCode\day04;
 
 
-class Task04 extends \dbx12\adventOfCode\Task
+use dbx12\adventOfCode\Task;
+
+class Task04 extends Task
 {
     protected $inputFiles = __DIR__ . '/input.txt';
     protected $testFiles = __DIR__ . '/test.txt';
@@ -131,9 +133,9 @@ class Task04 extends \dbx12\adventOfCode\Task
     {
         foreach ($validators as $attribute => $validator) {
             if ($validator($person[$attribute] ?? null)) {
-                $this->dbg(" Validated: $attribute");
+                self::dbg(" Validated: $attribute");
             } else {
-                $this->dbg(" Failed: $attribute");
+                self::dbg(" Failed: $attribute");
                 return false;
             }
         }
@@ -144,9 +146,9 @@ class Task04 extends \dbx12\adventOfCode\Task
     {
         $validPersons = [];
         foreach ($persons as $index => $person) {
-            $this->dbg("Validating passport $index");
+            self::dbg("Validating passport $index");
             if ($this->checkRequiredFields($person, $optionalFields)) {
-                $this->dbg(' Passport valid');
+                self::dbg(' Passport valid');
                 $validPersons[] = $person;
             }
         }
@@ -157,14 +159,14 @@ class Task04 extends \dbx12\adventOfCode\Task
     {
         foreach (static::PASSPORT_FIELDS as $requiredField) {
             if (array_key_exists($requiredField, $person)) {
-                $this->dbg(" Present: $requiredField");
+                self::dbg(" Present: $requiredField");
                 continue;
             }
             if (in_array($requiredField, $optionalFields, true)) {
-                $this->dbg(" Missing but optional: $requiredField");
+                self::dbg(" Missing but optional: $requiredField");
                 continue;
             }
-            $this->dbg(" Missing attribute: $requiredField");
+            self::dbg(" Missing attribute: $requiredField");
             return false;
         }
         return true;

@@ -20,7 +20,7 @@ class Task06 extends Task
             $uniqueAnswers = $this->uniqueAnswersPerGroup($group);
             $uniqueAnswerCount = count($uniqueAnswers);
             $answerCounts[] = $uniqueAnswerCount;
-            $this->dbg(sprintf("Group answer: %s\nUnique answers: %s\nCount: %d\n", json_encode($group), implode('',$uniqueAnswers), $uniqueAnswerCount));
+            self::dbg(sprintf("Group answer: %s\nUnique answers: %s\nCount: %d\n", json_encode($group), implode('',$uniqueAnswers), $uniqueAnswerCount));
         }
         printf("Evaluated %d groups and got at total of %d unique answers\n",count($groups),array_sum($answerCounts));
     }
@@ -34,7 +34,7 @@ class Task06 extends Task
             $uniqueAnswers = $this->commonAnswersPerGroup($group);
             $uniqueAnswerCount = count($uniqueAnswers);
             $answerCounts[] = $uniqueAnswerCount;
-            $this->dbg(sprintf("Group answer: %s\nCommon answers: %s\nCount: %d\n", json_encode($group), implode('',$uniqueAnswers), $uniqueAnswerCount));
+            self::dbg(sprintf("Group answer: %s\nCommon answers: %s\nCount: %d\n", json_encode($group), implode('',$uniqueAnswers), $uniqueAnswerCount));
         }
         printf("Evaluated %d groups and got at total of %d common answers\n",count($groups),array_sum($answerCounts));
     }

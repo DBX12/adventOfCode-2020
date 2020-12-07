@@ -15,6 +15,13 @@ abstract class Task
 
     public bool $debug = false;
 
+    protected static Task $instance;
+
+    public function __construct()
+    {
+        static::$instance = $this;
+    }
+
     protected function loadInput($subtask = '', bool $asTest = false): array
     {
         if ($asTest) {
@@ -41,9 +48,9 @@ abstract class Task
         return file($fileName, FILE_IGNORE_NEW_LINES);
     }
 
-    protected function dbg(string $msg)
+    public static function dbg(string $msg)
     {
-        if ($this->debug) {
+        if (static::$instance->debug) {
             echo $msg . PHP_EOL;
         }
     }

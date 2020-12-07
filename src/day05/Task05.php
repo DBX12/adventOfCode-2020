@@ -28,7 +28,7 @@ class Task05 extends Task
         $start = min($seatIds);
         for ($i = $start; $i < max($seatIds); $i++) {
             if ($seatIds[$i - $start] === $i) {
-                $this->dbg('Exists: ' . $i);
+                self::dbg('Exists: ' . $i);
                 continue;
             }
             printf("Seat id %d is missing\n", $i);
