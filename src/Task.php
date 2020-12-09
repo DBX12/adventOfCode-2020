@@ -9,9 +9,9 @@ use RuntimeException;
 abstract class Task
 {
     /** @var string[]|string */
-    protected $inputFiles =  __DIR__.'/input.txt';
+    protected $inputFiles = __DIR__ . '/input.txt';
     /** @var string[]|string */
-    protected $testFiles = __DIR__.'/test.txt';
+    protected $testFiles = __DIR__ . '/test.txt';
 
     public bool $debug = false;
 
@@ -37,11 +37,11 @@ abstract class Task
                 throw new RuntimeException('Unknown file');
             }
             $fileName = $fileNames[$subtask];
-        }else{
+        } else {
             $fileName = $fileNames;
         }
 
-        if(!is_readable($fileName)){
+        if (!is_readable($fileName)) {
             throw new RuntimeException("Cannot access file $fileName");
         }
 
@@ -73,11 +73,28 @@ abstract class Task
      * @param array $multidimensionalInput
      * @return array
      */
-    protected function flattenArray(array $multidimensionalInput): array{
+    protected function flattenArray(array $multidimensionalInput): array
+    {
         $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($multidimensionalInput));
-        $result = [];
-        foreach($iterator as $v){
+        $result   = [];
+        foreach ($iterator as $v) {
             $result[] = $v;
+        }
+        return $result;
+    }
+
+    /**
+     * Casts all items in an array to integer.
+     * Useful if the puzzle input consists only of numbers and they are used in arithmetic operations like day 1 or 9.
+     *
+     * @param array $array The array with items of another type (probably string)
+     * @return array The array with integer values
+     */
+    protected function castArrayItemsToInt(array $array): array
+    {
+        $result = [];
+        foreach ($array as $item) {
+            $result[] = (int)$item;
         }
         return $result;
     }

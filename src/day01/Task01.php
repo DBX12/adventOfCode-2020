@@ -15,11 +15,7 @@ class Task01 extends Task
     public function solveSubtaskA(bool $asTest = false): void
     {
         $strNumbers = $this->loadInput('a', $asTest);
-        $numbers    = [];
-        // cast
-        foreach ($strNumbers as $strNumber) {
-            $numbers[] = (int)$strNumber;
-        }
+        $numbers    = $this->castArrayItemsToInt($strNumbers);
 
         sort($numbers, SORT_NUMERIC);
 
@@ -45,11 +41,7 @@ class Task01 extends Task
     public function solveSubtaskB(bool $asTest = false): void
     {
         $strNumbers = $this->loadInput('b', $asTest);
-        $numbers    = [];
-        // cast
-        foreach ($strNumbers as $strNumber) {
-            $numbers[] = (int)$strNumber;
-        }
+        $numbers    = $this->castArrayItemsToInt($strNumbers);
 
         sort($numbers, SORT_NUMERIC);
 
